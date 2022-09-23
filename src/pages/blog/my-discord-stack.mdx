@@ -11,33 +11,35 @@ I've been using a lot of different technologies and I'm going explain why I chos
 
 <h1 className="text-3xl my-4">The Runtime</h1>
 
-**Node.js** is the most used runtime for Discord bots.
-Due to the popularity of JavaScript on the web,
-many developers find it easy to write server-side applications in JavaScript thanks to the huge community support behind it.
-Almost every functionality you need is available as a package on _npm_, and most
+<span class="bg-green-700 text-white px-1">Node.js</span> is the most used runtime for Discord bots.
+Thanks to the wide popularity of JavaScript on the web,
+many developers find it easy to write server-side applications in JavaScript because of the huge community support behind it.
+Almost every functionality you need is available as a package on <span class="bg-red-600 text-white px-1">npm</span>, and most
 packages are well maintained and documented. Running code on Node.js is straightforward -
 write your code in a file and run it with `node <filename>`, no compilation needed.
 Node.js is also extremely quick and can handle a lot of requests at once, making it a great choice for a Discord bot.
 
 <h1 className="text-3xl my-4">discord.js</h1>
 
-**discord.js** is my library of choice for interacting with the Discord API. It's by far the most used and most maintained wrapper around the Discord API.
-Discord.js is constantly up to date with the latest Discord API changes, meaning you can use
-the latest features without having to wait. It also has a fantastic documentation and guide,
-making it easy to get going with.
+<span class="bg-blue-500 text-white px-1">discord.js</span> is my library of choice
+for interacting with the Discord API. It's by far the most used and most maintained
+wrapper around the Discord API. Discord.js is constantly up to date with the latest
+Discord API changes, meaning you can use the latest features without having to wait.
+It also has a fantastic documentation and guide, making it easy to get going with.
 
 Here is a simple example of a command written using discord.js that replies to /ping with 'Pong!':
 
 <p className="my-2"></p>
-```js {4}
-const {SlashCommandBuilder} = require("discord.js");
+````ts
+
+const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 data: new SlashCommandBuilder()
-.setName("ping")
-.setDescription("Replies with Pong!"),
+.setName('ping')
+.setDescription('Replies with Pong!'),
 async execute(interaction) {
-await interaction.reply("Pong!");
+await interaction.reply('Pong!');
 },
 };
 
@@ -47,7 +49,7 @@ await interaction.reply("Pong!");
 
 Okay so writing a Ping-Pong command is fairly easy, but what if we want to add more commands and more complex functionality?
 By complex I mean things like preconditions, permissions, and argument parsing.
-This is where **Sapphire.js** comes in. Sapphire is a framework built on top of discord.js
+This is where <span class="bg-blue-700 text-white px-1">Sapphire.js</span> comes in. Sapphire is a framework built on top of discord.js
 that enables us to write more complex bots with ease. It has built it features like
 preconditions, argument parsing, and command cooldowns.
 
@@ -97,11 +99,12 @@ In this example, we're using the `isCommandDisabled` precondition, which is a cu
 
 <h1 className="text-3xl my-4">tRPC</h1>
 
-**tRPC** is the part of the stack that I'm most excited about. tRPC is a library that
-enables us to write end-to-end fully typesafe APIs with minimal boilerplate and no schemas and code generation.
-That means a developer experience from heaven - no more runtime errors due to type mismatches.
-tRPC provides `useQuery` and `useMutation` hooks that are a thin wrapper around the hooks provided by
-React Query, but with the added benefit of type safety.
+<span class="bg-blue-400 text-white px-1">tRPC</span> is the part of the stack that
+I'm most excited about. tRPC is a library that enables us to write end-to-end fully
+typesafe APIs with minimal boilerplate and no schemas and code generation. That means
+a developer experience from heaven - no more runtime errors due to type mismatches.
+tRPC provides `useQuery` and `useMutation` hooks that are a thin wrapper around the
+hooks provided by React Query, but with the added benefit of type safety.
 
 <br />
 For example, if we pass a wrong type to `useQuery`, we'll get a type error:
@@ -121,11 +124,11 @@ instead, we'll get a type error on our IDE before we even run the code.
 
 <h1 className="text-3xl my-4">Prisma</h1>
 
-**Prisma** is an ORM that enables us to write type-safe database queries.
-The Prisma client can be used to safely query both SQL and NoSQL databases,
-such as PostgreSQL, MySQL, MongoDB, and SQLite. Prisma does all the heavy lifting
-for us, so we don't have to worry about writing SQL queries or dealing with
-database migrations.
+<span class="bg-blue-900 text-white px-1">Prisma</span> is an ORM that enables us
+to write type-safe database queries. The Prisma client can be used to safely query
+both SQL and NoSQL databases, such as PostgreSQL, MySQL, MongoDB, and SQLite. Prisma
+does all the heavy lifting for us, so we don't have to worry about writing SQL queries
+or dealing with database migrations.
 
 <br />
 
@@ -167,18 +170,17 @@ const guild = await prisma.guild.findUnique({
 
 <h1 className="text-3xl my-4">Next.js</h1>
 
-**Next.js** is a React framework that let's us build _web applications_.
-React is merely a library for building UIs, it provides us with helpful functions
-to build UI but it doesn't provide us with a way to build a full application.
-Building a React app from scratch requires some effort, like setting up tools like
-Webpack, Babel, and TypeScript. Next.js takes care of all that for us, so that we can
-focus on diving into building our app.
-Next gives us features like Routing, Server-Side Rendering, Static Site Generation,
-and Data Fetching, all out of the box. Without it, we'd have to install and setup
-a lot of different packages to get the same functionality.
-I use Next.js to build web dashboards for my Discord bots thanks to its developer experience
-and performance. Next integrates like a charm with tRPC, allowing us that sweet
-end-to-end type safety.
+<span class="bg-gray-800 text-white px-1">Next.js</span> is a React framework that
+let's us build _web applications_. React is merely a library for building UIs, it
+provides us with helpful functions to build UI but it doesn't provide us with a way
+to build a full application. Building a React app from scratch requires some effort,
+like setting up tools like Webpack, Babel, and TypeScript. Next.js takes care of
+all that for us, so that we can focus on diving into building our app. Next gives
+us features like Routing, Server-Side Rendering, Static Site Generation, and Data
+Fetching, all out of the box. Without it, we'd have to install and setup a lot of
+different packages to get the same functionality. I use Next.js to build web dashboards
+for my Discord bots thanks to its developer experience and performance. Next integrates
+like a charm with tRPC, allowing us that sweet end-to-end type safety.
 
 <h1 className="text-3xl my-4">Summary</h1>
 
