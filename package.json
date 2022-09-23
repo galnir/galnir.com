@@ -20,5 +20,9 @@
   },
   "keywords": [
     "astro-adapter"
-  ]
+  ],
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.5.4"
+  }
 }
